@@ -6,7 +6,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     poetry2nix.url = "github:nix-community/poetry2nix";
     poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
-    weblate.url = "github:WeblateOrg/weblate/weblate-5.0.2";
+    weblate.url = "github:WeblateOrg/weblate/weblate-5.5.5";
     weblate.flake = false;
     aeidon-src.url = "github:otsaloma/gaupol/1.12";
     aeidon-src.flake = false;
@@ -37,7 +37,7 @@
                   # we increase it. I guess this is due to the fact that we test the setup
                   # very early into the initialization of the server, so the load might be
                   # higher compared to production setups?
-                  ./longer-celery-wait-time.patch
+                  # ./longer-celery-wait-time.patch
                   # FIXME This shouldn't be necessary and probably has to do with some dependency mismatch.
                   ./cache.lock.patch
                 ];
@@ -102,7 +102,7 @@
                       cargoDeps =
                         let
                           getCargoHash = version: {
-                            "0.2.14" = "sha256-EzlwSic1Qgs4NZAde/KWg0Qjs+PNEPcnE8HyIPoYZQ0=";
+                            "0.2.17" = "sha256-WomlVzKOUfcgAWGJInSvZn9hm+bFpgc4nJbRiyPCU64=";
                           }.${version};
                         in
                         pkgs.rustPlatform.fetchCargoTarball {
@@ -137,7 +137,7 @@
                         cargoDeps = pkgs.rustPlatform.fetchCargoTarball {
                           inherit (old) src;
                           name = "${old.pname}-${old.version}";
-                          hash = "sha256-/sel54PV58y6oUgIzHXSCL4RMljPL9kZ6ER/pRTAjAI=";
+                          hash = "sha256-CIt/ChNcoqKln6PgeTGp9pfmIWlJj+c5SCPtBhsnT6U=";
                         };
 
                       }
